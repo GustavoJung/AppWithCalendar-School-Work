@@ -16,12 +16,14 @@ import com.example.trabalhodsd.DAO.AppDatabase;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Telaprincipal extends AppCompatActivity implements NovaAtividadeDialog.AtividadeListener {
     private Button button_addAtividade;
     private AppDatabase banco;
     private String[] itens = new String[10];
+    private List<String>itensL;
     private ArrayAdapter<String> adapter;
     private int count;
 
@@ -33,7 +35,7 @@ public class Telaprincipal extends AppCompatActivity implements NovaAtividadeDia
             itens[i] = " ";
         }
         count = 0;
-
+        itensL = new ArrayList<>();
         String nome = getIntent().getStringExtra("nome");
         Toast.makeText(this, "Bem vindo "+nome+  "!", Toast.LENGTH_SHORT).show();
         //banco = Room.databaseBuilder(getApplicationContext(),
@@ -56,8 +58,11 @@ public class Telaprincipal extends AppCompatActivity implements NovaAtividadeDia
     }
 
     private void populateListView() {
-            //Adapter
-            adapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, itens);
+        if(itensL.size() == 0){
+            itensL.add("Adicione uma nova tarefa!!");
+        }
+        //Adapter
+            adapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, itensL);
             //Configurando
             ListView listV = (ListView) findViewById(R.id.list_view);
             listV.setAdapter(adapter);
@@ -66,6 +71,11 @@ public class Telaprincipal extends AppCompatActivity implements NovaAtividadeDia
 
     @Override
     public void setText(String nome, String data) {
+        if(itensL.size() == 1)
+            itensL.set(0,nome);
+        else
+            itensL.add(nome);
+
         itens[count] = nome;
         adapter.notifyDataSetChanged();
         Toast.makeText(this, "Atividade adicionada!", Toast.LENGTH_SHORT).show();
