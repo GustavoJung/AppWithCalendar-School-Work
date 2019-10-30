@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btLogin;
     private EditText text;
     private String nome_user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +26,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 nome_user = text.getText().toString();
                 Intent newActivity = new Intent(MainActivity.this, Telaprincipal.class);
-                newActivity.putExtra("nome",nome_user);
+                newActivity.putExtra("nome", nome_user);
                 startActivity(newActivity);
                 finish();
             }
         });
-
-
     }
 
 }

@@ -1,45 +1,42 @@
 package com.example.trabalhodsd;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.room.Room;
-
-import com.example.trabalhodsd.DAO.AppDatabase;
-
-import org.w3c.dom.Text;
+import com.example.trabalhodsd.controller.SaveData;
+import com.example.trabalhodsd.model.Tarefa;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Telaprincipal extends AppCompatActivity implements NovaAtividadeDialog.AtividadeListener {
     private Button button_addAtividade;
-    private AppDatabase banco;
     private String[] itens = new String[10];
-    private List<String>itensL;
+    private List<String> itensL;
     private ArrayAdapter<String> adapter;
     private int count;
+    private SaveData saveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_telaprincipal2);
-        for(int i=0; i<10; i++){
+        saveData = new SaveData(this);
+
+        for (int i = 0; i < 10; i++) {
             itens[i] = " ";
         }
         count = 0;
         itensL = new ArrayList<>();
         String nome = getIntent().getStringExtra("nome");
-        Toast.makeText(this, "Bem vindo "+nome+  "!", Toast.LENGTH_SHORT).show();
-        //banco = Room.databaseBuilder(getApplicationContext(),
-            //    AppDatabase.class, "database").build();
+        Toast.makeText(this, "Bem vindo " + nome + "!", Toast.LENGTH_SHORT).show();
 
 
         button_addAtividade = (Button) findViewById(R.id.bt_adicionarAtividade);
@@ -54,31 +51,33 @@ public class Telaprincipal extends AppCompatActivity implements NovaAtividadeDia
 
     private void openAddAtividade() {
         NovaAtividadeDialog dialog = new NovaAtividadeDialog();
-        dialog.show(getSupportFragmentManager(),"Nova atividade");
+        dialog.show(getSupportFragmentManager(), "Nova atividade");
+
     }
 
     private void populateListView() {
-        if(itensL.size() == 0){
-            itensL.add("Adicione uma nova tarefa!!");
+        ListView listV = (ListView) findViewById(R.id.list_view);
+        Cursor data = saveData.getData();
+        itensL = new ArrayList<>();
+        while (data.moveToNext()) {
+            //get the value from the database in column 1
+            //then add it to the ArrayList
+            itensL.add(data.getString(1));
         }
-        //Adapter
-            adapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, itensL);
-            //Configurando
-            ListView listV = (ListView) findViewById(R.id.list_view);
-            listV.setAdapter(adapter);
+        //create the list adapter and set the adapter
+        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itensL);
+        listV.setAdapter(adapter);
 
     }
 
-    @Override
-    public void setText(String nome, String data) {
-        if(itensL.size() == 1)
-            itensL.set(0,nome);
-        else
-            itensL.add(nome);
 
-        itens[count] = nome;
-        adapter.notifyDataSetChanged();
+    @Override
+    public void setText(View v, String nome, String data) {
+        Tarefa t = new Tarefa(nome, data);
+        itensL.add(nome);
+
+        // adapter.notifyDataSetChanged();
         Toast.makeText(this, "Atividade adicionada!", Toast.LENGTH_SHORT).show();
-        count++;
+
     }
 }

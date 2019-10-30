@@ -31,7 +31,7 @@ public class NovaAtividadeDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_form,null);
+        final View view = inflater.inflate(R.layout.layout_form, null);
 
         builder.setView(view).setTitle("Nova Atividade").setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
@@ -41,9 +41,9 @@ public class NovaAtividadeDialog extends AppCompatDialogFragment {
         }).setPositiveButton("Criar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                    String nomeAtividade = nome.getText().toString();
-                    String dataAtividade = data.getText().toString();
-                    listener.setText(nomeAtividade,dataAtividade);
+                String nomeAtividade = nome.getText().toString();
+                String dataAtividade = data.getText().toString();
+                listener.setText(view, nomeAtividade, dataAtividade);
             }
         });
 
@@ -52,7 +52,7 @@ public class NovaAtividadeDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
-    public interface AtividadeListener{
-        void setText(String nome, String data);
+    public interface AtividadeListener {
+        void setText(View v, String nome, String data);
     }
 }
