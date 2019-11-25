@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,60 +19,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="15dp">
-
-        <Button
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bt_verCalendario"
-            android:layout_gravity="left"
-            android:text="Ver calendário"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:enabled="false"/>
+            android:layout_margin="10dp"
+            android:hint="Insira a URL do calendário a ser importado!"
+        />
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/bt_adicionarAtividade"
-            android:layout_gravity="center_horizontal"
-            android:text="Nova Atividade"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            style="@style/Widget.AppCompat.Button.Colored"/>
+            android:layout_marginTop="15dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/bt_select_time"
-            android:text="7 dias"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:enabled="false"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AQUI VAI O CALENDARIO NESSA TELA TODA">
+            </EditText>
+
+        </LinearLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
-
-        <ListView
-            android:id="@+id/list_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:divider="@android:color/transparent">
-
-        </ListView>
-
-    </RelativeLayout>
 </LinearLayout>
