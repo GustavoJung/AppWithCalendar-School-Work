@@ -12,9 +12,9 @@ public class User {
 
     @PrimaryKey
     private int id_user;
-    @ColumnInfo(name= "nome")
+    @ColumnInfo(name = "nome")
     private String nome;
-    @ColumnInfo(name="list_tarefas")
+    @ColumnInfo(name = "list_tarefas")
     private List<Tarefa> tarefas;
 
     public User(int id, String nome, List<Tarefa> tarefas) {

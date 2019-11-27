@@ -1,24 +1,40 @@
 package com.example.trabalhodsd.model;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
 
 //chave estrangeira para usuario
-    @Entity(foreignKeys = @ForeignKey(entity = User.class,
-        parentColumns = "id_tarefa",
-        childColumns = "user_id"))
-    public class Tarefa {
 
-        @PrimaryKey
-        private int id_tarefa;
+public class Tarefa {
 
-        @ColumnInfo(name="nome")
-        private String nome;
-        @ColumnInfo(name="data")
-        private String data;
+    private int id_tarefa;
+    private String nome;
+    private String data;
 
-
-
+    public Tarefa(String nome, String data) {
+        this.nome = nome;
+        this.data = data;
     }
+
+    public int getId_tarefa() {
+        return id_tarefa;
+    }
+
+    public void setId_tarefa(int id_tarefa) {
+        this.id_tarefa = id_tarefa;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+}

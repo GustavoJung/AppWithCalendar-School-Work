@@ -36,7 +36,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AQUI VAI O CALENDARIO NESSA TELA TODA">
+                android:text="AQUI VAI O CALENDARIO NESSA TELA TODA, VAI SER UM FRAGMENT">
             </EditText>
 
         </LinearLayout>
