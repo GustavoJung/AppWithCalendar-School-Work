@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Telaprincipal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFF">
 
 
     <ImageView
         android:id="@+id/moodle_img"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:contentDescription="moodle_logo"
         android:src="@mipmap/logo_moodle_833x598"
         app:srcCompat="@mipmap/logo_moodle_833x598" />
@@ -21,24 +22,38 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="15dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Insira a URL do calendário a ser importado!"
-        />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:padding="10px">
 
             <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="AQUI VAI O CALENDARIO NESSA TELA TODA, VAI SER UM FRAGMENT">
-            </EditText>
+                android:layout_height="100px"
+                android:layout_margin="10dp"
+                android:hint="URL do calendário a ser importado!"
+                android:inputType="textLongMessage"
+                android:textSize="38px"/>
 
+            <Button
+                android:layout_width="250px"
+                android:layout_height="100px"
+                android:text="Importar"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                style="@style/Widget.AppCompat.Button.Colored">
+
+            </Button>
         </LinearLayout>
+
     </LinearLayout>
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.trabalhodsd.FragmentCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

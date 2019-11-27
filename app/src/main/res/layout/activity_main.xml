@@ -22,33 +22,12 @@
             app:srcCompat="@mipmap/logo_moodle_833x598"
             android:background="@drawable/img_view_border" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60px"
-            android:text="Faça login com seu CPF"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textSize="18sp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Seu cpf"
-            android:textSize="14sp"
-            android:layout_gravity="center"
-            android:id="@+id/nome_user" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bt_login"
-            android:layout_gravity="center"
-            android:text="Login"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:layout_marginTop="15dp"
-            style="@style/Widget.AppCompat.Button.Colored" />
+            android:text="Tela principal"
+            android:id="@+id/bt_login">
+        </Button>
 
     </LinearLayout>
 </LinearLayout>
